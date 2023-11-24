@@ -173,7 +173,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return new Promise((resolve, reject) => {
     graphql(`
-      query MyQuery {
+    query MyQuery {
         Drupal {
           nodeRecipes(first: 100) {
             edges {
@@ -188,11 +188,42 @@ exports.createPages = ({ actions, graphql }) => {
                 path
                 preparationTime
                 numberOfServings
+                ingredients
+                promote
+                langcode {
+                  direction
+                  name
+                  id
+                }
+                mediaImage {
+                  changed
+                  created
+                  id
+                  mediaImage {
+                    ...DrupalGraphQL_ImageFragment
+                    height
+                    styles {
+                      height
+                      style
+                      url
+                      width
+                    }
+                    url
+                    width
+                  }
+                  status
+                }
+                recipeInstruction {
+                  format
+                  processed
+                  value
+                }
               }
             }
           }
         }
       }
+      
     `).then(result => {
       if (result.errors) {
         reject(result.errors); // Correct spelling of 'errors'
@@ -220,3 +251,74 @@ exports.createPages = ({ actions, graphql }) => {
     });
   });
 };
+/*
+query MyQuery {
+  Drupal {
+    nodeRecipes(first: 100) {
+      edges {
+        node {
+          changed
+          cookingTime
+          created
+          difficulty
+          id
+          title
+          status
+          path
+          preparationTime
+          numberOfServings
+          ingredients
+          promote
+          langcode {
+            direction
+            name
+            id
+          }
+          mediaImage {
+            changed
+            created
+            id
+            mediaImage {
+              height
+              styles {
+                height
+                style
+                url
+                width
+              }
+              url
+              width
+            }
+            status
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+query MyQuery {
+        Drupal {
+          nodeRecipes(first: 100) {
+            edges {
+              node {
+                changed
+                cookingTime
+                created
+                difficulty
+                id
+                title
+                status
+                path
+                preparationTime
+                numberOfServings
+              }
+            }
+          }
+        }
+      }
+*/

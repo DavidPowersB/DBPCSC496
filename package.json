@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "gatsby": "^5.12.11",
+    "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^3.12.3",
     "gatsby-plugin-manifest": "^5.12.3",
     "gatsby-plugin-mdx": "^5.12.3",
