@@ -200,7 +200,6 @@ exports.createPages = ({ actions, graphql }) => {
                   created
                   id
                   mediaImage {
-                    ...DrupalGraphQL_ImageFragment
                     height
                     styles {
                       height
